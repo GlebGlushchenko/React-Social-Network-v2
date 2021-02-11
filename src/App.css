@@ -1,0 +1,99 @@
+.main__wrapper {
+  display: flex;
+  align-items: center;
+  padding: 0px 70px;
+}
+
+.container {
+  display: flex;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#root {
+  background-color: rgb(218, 218, 218);
+}
+.app {
+  width: 100%;
+}
+.app__wrapper {
+  padding: 35px 0px;
+}
+
+.nav {
+  width: 100%;
+  background-color: rgb(197, 197, 197);
+}
+
+.nav__links {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+
+.nav__link {
+  padding: 50px;
+  font-weight: 600;
+  font-size: 20px;
+  width: 100%;
+  transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+}
+
+.nav__link:last-child {
+  margin-right: 0;
+}
+
+.nav__link:hover {
+  background-color: rgb(231, 231, 231);
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.nav__logo {
+  opacity: 0.9;
+}
+
+.btn {
+  padding: 30px;
+  cursor: pointer;
+  outline-style: none;
+  border: none;
+  font-size: 16px;
+  background-color: rgb(197, 197, 197);
+  transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  font-weight: 600;
+}
+
+.btn:hover {
+  background-color: rgb(231, 231, 231);
+}
+
+.link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 0;
+  transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+}
+
+.link:hover {
+  font-size: 15px;
+}
