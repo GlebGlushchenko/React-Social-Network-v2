@@ -1,0 +1,27 @@
+.footer {
+  background-color: rgb(190, 190, 190);
+  width: 100%;
+
+  text-align: center;
+  padding: 25px 0px;
+}
+
+.footer__wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.lofo__footer {
+  width: 60px;
+  height: auto;
+}
+
+.footer__links {
+  display: flex;
+  align-items: center;
+}
+
+.footer__link {
+  margin-left: 15px;
+}

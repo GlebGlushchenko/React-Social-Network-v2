@@ -1,0 +1,25 @@
+.nav__links {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+
+.nav__link {
+  padding: 50px;
+  font-weight: 600;
+  font-size: 20px;
+  width: 100%;
+  transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+}
+
+.nav__link:last-child {
+  margin-right: 0;
+}
+
+.nav__link:hover {
+  background-color: rgb(231, 231, 231);
+}
