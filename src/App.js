@@ -1,31 +1,26 @@
+import { Route } from 'react-router-dom';
 import './App.css';
-import Nav from './component/Header__nav/Nav';
+import About from './component/About/About';
 
-import nav__logo from './img/header__nav/nav__logo.png';
-import icon__login from './img/header__nav/icon__login.png';
-import Nav__icon from './component/Header__nav/Nav__icon';
 import Footer from './component/Footer/Footer';
-import Profile from './component/Main/Profile';
-import Posts from './component/Main/Posts';
+
+import Header from './component/Header__nav/Header';
+import Login from './component/Login/Ligon';
+import ProfileSection from './component/Main/ProfileSection';
+import Messages from './component/Messages/Messages';
+import News from './component/News/News';
+import Users from './component/Users/Users';
 
 function App() {
   return (
     <div className="main__wrapper">
-      <header className="header">
-        <Nav__icon text={'Main'} img={nav__logo} />
-        <div className="container">
-          <div className="app">
-            <div className="app__wrapper">
-              <Nav />
-            </div>
-          </div>
-        </div>
-        <Nav__icon text={'Login'} img={icon__login} />
-      </header>
-      <section className="content">
-        <Profile />
-        <Posts />
-      </section>
+      <Header />
+      <Route path="/profile" render={() => <ProfileSection />} />
+      <Route path="/messages" render={() => <Messages />} />
+      <Route path="/news" render={() => <News />} />
+      <Route path="/users" render={() => <Users />} />
+      <Route path="/about" render={() => <About />} />
+      <Route path="/login" render={() => <Login />} />
       <Footer />
     </div>
   );

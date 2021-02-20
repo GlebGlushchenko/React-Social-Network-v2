@@ -27,7 +27,6 @@ const Posts = () => {
     });
     setTest('');
   };
-  console.log(postText);
 
   return (
     <div className="posts">

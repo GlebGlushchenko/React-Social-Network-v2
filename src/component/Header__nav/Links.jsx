@@ -1,25 +1,26 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import styles from './links.module.css';
 
 const Links = () => {
   console.log(styles);
   return (
     <nav className={styles.nav__links}>
-      <a className={styles.nav__link} href="#">
+      <NavLink to="/profile" className={styles.nav__link} href="#">
         Profile
-      </a>
-      <a className={styles.nav__link} href="#">
+      </NavLink>
+      <NavLink to="/users" className={styles.nav__link} href="#">
         Users
-      </a>
-      <a className={styles.nav__link} href="#">
+      </NavLink>
+      <NavLink to="messages" className={styles.nav__link} href="#">
         Messages
-      </a>
-      <a className={styles.nav__link} href="#">
+      </NavLink>
+      <NavLink to="news" className={styles.nav__link} href="#">
         News
-      </a>
-      <a className={styles.nav__link} href="#">
+      </NavLink>
+      <NavLink to="about" className={styles.nav__link} href="#">
         About
-      </a>
+      </NavLink>
     </nav>
   );
 };
