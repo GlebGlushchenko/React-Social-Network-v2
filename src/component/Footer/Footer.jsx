@@ -9,7 +9,10 @@ const Footer = () => {
       <div className={styles.footer__wrapper}>
         <div className={styles.footer__links}>
           Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          <a className={styles.footer__link} href="">
+          <a
+            target="_blank"
+            className={styles.footer__link}
+            href="https://github.com/GlebGlushchenko">
             <img className={styles.lofo__footer} src={logo__footer} alt="" />
           </a>
         </div>

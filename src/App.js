@@ -1,11 +1,11 @@
 import { Route } from 'react-router-dom';
-import './App.css';
+import './App.scss';
 import About from './component/About/About';
 
 import Footer from './component/Footer/Footer';
 
 import Header from './component/Header__nav/Header';
-import Login from './component/Login/Ligon';
+import Login from './component/Login/Login';
 import ProfileSection from './component/Main/ProfileSection';
 import Messages from './component/Messages/Messages';
 import News from './component/News/News';

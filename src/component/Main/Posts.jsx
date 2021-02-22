@@ -15,7 +15,7 @@ const Posts = () => {
 
   const [postText, setPostText] = useState(massages);
 
-  const [test, setTest] = useState(null);
+  const [test, setTest] = useState('');
 
   const onChangeInput = (text) => {
     setTest(text.currentTarget.value);

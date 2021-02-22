@@ -1,0 +1,48 @@
+.messages__users {
+  width: 50%;
+  margin-right: 100px;
+}
+
+.message__section {
+  width: 50%;
+}
+
+.messages {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.messagesText {
+  margin-bottom: 50px;
+}
+
+.user {
+  display: flex;
+  margin-bottom: 20px;
+  cursor: pointer;
+  padding: 20px;
+  align-items: center;
+  font-size: 18px;
+
+  &:hover {
+    background-color: rgb(197, 197, 197);
+  }
+}
+
+.messages__user {
+  margin-left: 10px;
+}
+
+.messages__title {
+  margin-bottom: 100px;
+}
+
+.messages__wrapper {
+  text-align: center;
+  padding: 50px;
+}
+
+.messages__user__active {
+  background-color: rgb(197, 197, 197);
+}
