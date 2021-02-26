@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
-import profile__avatar from '../../img/profile/profile__avatar.png';
 import Message from './MessageUserName';
 
 import styles from './messages.module.scss';
@@ -31,7 +29,6 @@ const Messages = () => {
   const [messagesText, setMessagesText] = useState(messages);
 
   const onClickMessagesText = () => {
-    console.log(messagesText.mess);
     setMessagesText({
       mess: [...messagesText.mess, { message: messageInputText }],
     });

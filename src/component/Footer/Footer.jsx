@@ -11,6 +11,7 @@ const Footer = () => {
           Lorem ipsum dolor sit amet consectetur adipisicing elit.
           <a
             target="_blank"
+            rel="noreferrer"
             className={styles.footer__link}
             href="https://github.com/GlebGlushchenko">
             <img className={styles.lofo__footer} src={logo__footer} alt="" />
