@@ -4,22 +4,7 @@ import Message from './MessageUserName';
 import styles from './messages.module.scss';
 import MessageText from './MessageText';
 
-const Messages = () => {
-  const messagesUserName = [
-    { id: 1, name: 'Gleb' },
-    { id: 2, name: 'Valera' },
-    { id: 3, name: 'Vova' },
-    { id: 4, name: 'Alex' },
-  ];
-
-  const messages = {
-    mess: [
-      { message: 'Lorem ipsum dolor sit amet.' },
-      { message: 'Lorem ipsum  sit amet.' },
-      { message: 'Lorem fsdfsdfsd dolor sit amet.' },
-      { message: 'Lorem ipsum et43fd sit amet.' },
-    ],
-  };
+const Messages = ({ messagesUserName, messages }) => {
   const [messageInputText, setMessageInputText] = useState('');
 
   const onChangeINputText = (event) => {

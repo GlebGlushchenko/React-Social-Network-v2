@@ -2,11 +2,11 @@ import React from 'react';
 import Profile from './Profile';
 import Posts from './Posts';
 
-const ProfileSection = () => {
+const ProfileSection = ({ posts }) => {
   return (
     <section className="content">
       <Profile />
-      <Posts />
+      <Posts posts={posts} />
     </section>
   );
 };
