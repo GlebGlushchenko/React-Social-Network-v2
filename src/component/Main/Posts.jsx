@@ -23,7 +23,7 @@ const Posts = ({ posts }) => {
       <div className="posts__wrapper">
         <div className="posts__content">
           {postText.postText.map((post, index) => (
-            <Post key={index} postText={post.text} />
+            <Post like={post.like} key={post.id} postText={post.text} />
           ))}
         </div>
         <div className="posts__control">
