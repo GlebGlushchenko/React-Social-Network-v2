@@ -6,19 +6,16 @@ import Footer from './component/Footer/Footer';
 import Header from './component/Header__nav/Header';
 import Login from './component/Login/Login';
 import ProfileSection from './component/Main/ProfileSection';
-import Messages from './component/Messages/Messages';
+import Messages from './component/Dialogs/Diaologs';
 import News from './component/News/News';
 import Users from './component/Users/Users';
 
-function App({ posts, messagesUserName, messages }) {
+function App({ state }) {
   return (
     <div className="main__wrapper">
       <Header />
-      <Route path="/profile" render={() => <ProfileSection posts={posts} />} />
-      <Route
-        path="/messages"
-        render={() => <Messages messagesUserName={messagesUserName} messages={messages} />}
-      />
+      <Route path="/profile" render={() => <ProfileSection profilePage={state.profilePage} />} />
+      <Route path="/messages" render={() => <Messages messagesPage={state.messagesPage} />} />
       <Route path="/news" render={() => <News />} />
       <Route path="/users" render={() => <Users />} />
       <Route path="/about" render={() => <About />} />

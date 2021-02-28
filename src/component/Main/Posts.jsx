@@ -1,20 +1,59 @@
 import React, { useState } from 'react';
 import Post from './Post';
 
-const Posts = ({ posts }) => {
-  const [postText, setPostText] = useState(posts);
+const Posts = ({ profilePage }) => {
+  const [posts, setPosts] = useState(profilePage);
 
-  const [test, setTest] = useState('');
+  const [inputText, setInputText] = useState('');
 
   const onChangeInput = (text) => {
-    setTest(text.currentTarget.value);
+    setInputText(text.currentTarget.value);
   };
 
   const OnAddPost = () => {
-    setPostText({
-      postText: [...postText.postText, { text: test }],
+    setPosts({
+      ...posts,
+      posts1: [...posts.posts1, { text: inputText, like: 0 }],
     });
-    setTest('');
+
+    setInputText(' ');
+  };
+
+  const onRemovePost = (id) => {
+    setPosts({
+      posts1: [
+        ...posts.posts1.filter((_, curId) => {
+          if (id !== curId) {
+            console.log(curId);
+            return true;
+          }
+          return false;
+        }),
+      ],
+    });
+  };
+
+  const onAddLike = (id) => {
+    console.log(id);
+    setPosts({
+      ...posts,
+      posts1: [
+        ...posts.posts1.map((post) => {
+          return post.id === id ? { ...post, like: post.like + 1 } : post;
+        }),
+      ],
+    });
+  };
+
+  const onRemoveLike = (id) => {
+    setPosts({
+      ...posts,
+      posts1: [
+        ...posts.posts1.map((post) => {
+          return post.id === id ? { ...post, like: post.like - 1 } : post;
+        }),
+      ],
+    });
   };
 
   return (
@@ -22,13 +61,22 @@ const Posts = ({ posts }) => {
       <h2>Post</h2>
       <div className="posts__wrapper">
         <div className="posts__content">
-          {postText.postText.map((post, index) => (
-            <Post like={post.like} key={post.id} postText={post.text} />
+          {posts.posts1.map((post, index) => (
+            <Post
+              onRemovePost={onRemovePost}
+              onAddLike={onAddLike}
+              onRemoveLike={onRemoveLike}
+              id={post.id}
+              like={post.like}
+              key={index}
+              postText={post.text}
+              index={index}
+            />
           ))}
         </div>
         <div className="posts__control">
           <input
-            value={test}
+            value={inputText}
             onChange={onChangeInput}
             className="posts__controle__input"
             type="text"
