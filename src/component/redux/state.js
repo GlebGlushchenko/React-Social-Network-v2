@@ -1,6 +1,8 @@
+import { rerenderEntireTree } from '../../render';
+
 const state = {
   profilePage: {
-    posts1: [
+    posts: [
       { id: 1, text: 'Hi', like: 0 },
       { id: 2, text: 'Wellcome', like: 0 },
       { id: 3, text: 'lorem ipsum', like: 0 },
@@ -25,6 +27,17 @@ const state = {
       { message: 'Lorem ipsum et43fd sit amet.' },
     ],
   },
+};
+
+export const addPost = (postMessage) => {
+  const newPost = {
+    id: 5,
+    text: postMessage,
+    like: 0,
+  };
+
+  state.profilePage.posts.push(newPost);
+  rerenderEntireTree(state);
 };
 
 export default state;

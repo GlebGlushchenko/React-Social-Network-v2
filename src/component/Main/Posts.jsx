@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Post from './Post';
 
-const Posts = ({ profilePage }) => {
+const Posts = ({ profilePage, addPost }) => {
   const [posts, setPosts] = useState(profilePage);
 
   const [inputText, setInputText] = useState('');
@@ -11,12 +11,13 @@ const Posts = ({ profilePage }) => {
   };
 
   const OnAddPost = () => {
-    setPosts({
-      ...posts,
-      posts1: [...posts.posts1, { text: inputText, like: 0 }],
-    });
+    // setPosts({
+    //   ...posts,
+    //   posts1: [...posts.posts1, { text: inputText, like: 0 }],
+    // });
 
-    setInputText(' ');
+    // setInputText(' ');
+    addPost(inputText);
   };
 
   const onRemovePost = (id) => {
@@ -61,7 +62,7 @@ const Posts = ({ profilePage }) => {
       <h2>Post</h2>
       <div className="posts__wrapper">
         <div className="posts__content">
-          {posts.posts1.map((post, index) => (
+          {profilePage.posts.map((post, index) => (
             <Post
               onRemovePost={onRemovePost}
               onAddLike={onAddLike}

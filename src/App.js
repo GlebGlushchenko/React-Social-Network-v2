@@ -10,11 +10,14 @@ import Messages from './component/Dialogs/Diaologs';
 import News from './component/News/News';
 import Users from './component/Users/Users';
 
-function App({ state }) {
+function App({ state, addPost }) {
   return (
     <div className="main__wrapper">
       <Header />
-      <Route path="/profile" render={() => <ProfileSection profilePage={state.profilePage} />} />
+      <Route
+        path="/profile"
+        render={() => <ProfileSection addPost={addPost} profilePage={state.profilePage} />}
+      />
       <Route path="/messages" render={() => <Messages messagesPage={state.messagesPage} />} />
       <Route path="/news" render={() => <News />} />
       <Route path="/users" render={() => <Users />} />
