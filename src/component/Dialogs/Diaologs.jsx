@@ -4,21 +4,16 @@ import Message from './MessageUserName';
 import styles from './messages.module.scss';
 import MessageText from './MessageText';
 
-const Messages = ({ messagesPage }) => {
-  const [messageInputText, setMessageInputText] = useState('');
+const Messages = ({ messagesPage, updateNewMessagesText, addMessages }) => {
+  const newMessageElement = React.createRef();
 
-  const onChangeINputText = (event) => {
-    setMessageInputText(event.currentTarget.value);
+  const onChangeInputText = () => {
+    console.log(newMessageElement.current.value);
+    updateNewMessagesText(newMessageElement.current.value);
   };
 
-  const [messagesText, setMessagesText] = useState(messagesPage);
-
   const onClickMessagesText = () => {
-    setMessagesText({
-      ...messagesText,
-      dialogs: [...messagesText.dialogs, { message: messageInputText }],
-    });
-    setMessageInputText(' ');
+    addMessages(newMessageElement.current.value);
   };
 
   return (
@@ -31,10 +26,17 @@ const Messages = ({ messagesPage }) => {
           ))}
         </div>
         <div className={styles.message__section}>
-          {messagesText.dialogs.map((message, index) => (
+          {messagesPage.dialogs.map((message, index) => (
             <MessageText key={index} text={message.message} />
           ))}
-          <input onChange={onChangeINputText} value={messageInputText} type="text" name="" id="" />
+          <input
+            ref={newMessageElement}
+            onChange={onChangeInputText}
+            value={messagesPage.newMessageText}
+            type="text"
+            name=""
+            id=""
+          />
           <button onClick={onClickMessagesText}>Send</button>
         </div>
       </div>

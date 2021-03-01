@@ -1,23 +1,16 @@
 import React, { useState } from 'react';
 import Post from './Post';
 
-const Posts = ({ profilePage, addPost }) => {
+const Posts = ({ profilePage, addPost, updateNewPostText }) => {
   const [posts, setPosts] = useState(profilePage);
 
-  const [inputText, setInputText] = useState('');
-
-  const onChangeInput = (text) => {
-    setInputText(text.currentTarget.value);
+  const newPostElement = React.createRef();
+  const onChangeInput = () => {
+    updateNewPostText(newPostElement.current.value);
   };
 
   const OnAddPost = () => {
-    // setPosts({
-    //   ...posts,
-    //   posts1: [...posts.posts1, { text: inputText, like: 0 }],
-    // });
-
-    // setInputText(' ');
-    addPost(inputText);
+    addPost(newPostElement.current.value);
   };
 
   const onRemovePost = (id) => {
@@ -77,7 +70,8 @@ const Posts = ({ profilePage, addPost }) => {
         </div>
         <div className="posts__control">
           <input
-            value={inputText}
+            ref={newPostElement}
+            value={profilePage.newPostText}
             onChange={onChangeInput}
             className="posts__controle__input"
             type="text"

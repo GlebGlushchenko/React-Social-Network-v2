@@ -1,5 +1,3 @@
-import { rerenderEntireTree } from '../../render';
-
 const state = {
   profilePage: {
     posts: [
@@ -10,6 +8,7 @@ const state = {
       { id: 5, text: 'Bye', like: 0 },
       { id: 6, text: 'lorem ipsum', like: 1 },
     ],
+    newPostText: '',
   },
 
   messagesPage: {
@@ -26,17 +25,43 @@ const state = {
       { message: 'Lorem fsdfsdfsd dolor sit amet.' },
       { message: 'Lorem ipsum et43fd sit amet.' },
     ],
+    newMessageText: '',
   },
 };
+export let rerenderEntireTree = () => {};
 
-export const addPost = (postMessage) => {
+export const subscribe = (observer) => {
+  rerenderEntireTree = observer;
+};
+
+export const addPost = () => {
   const newPost = {
     id: 5,
-    text: postMessage,
+    text: state.profilePage.newPostText,
     like: 0,
   };
 
   state.profilePage.posts.push(newPost);
+  state.profilePage.newPostText = '';
+  rerenderEntireTree(state);
+};
+
+export const updateNewPostText = (newText) => {
+  state.profilePage.newPostText = newText;
+  rerenderEntireTree(state);
+};
+
+export const updateNewMessagesText = (newText) => {
+  state.messagesPage.newMessageText = newText;
+  rerenderEntireTree(state);
+};
+
+export const addMessages = () => {
+  const newMessage = {
+    message: state.messagesPage.newMessageText,
+  };
+  state.messagesPage.dialogs.push(newMessage);
+  state.messagesPage.newMessageText = '';
   rerenderEntireTree(state);
 };
 
