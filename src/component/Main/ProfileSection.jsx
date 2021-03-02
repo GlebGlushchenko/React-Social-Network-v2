@@ -2,11 +2,11 @@ import React from 'react';
 import Profile from './Profile';
 import Posts from './Posts';
 
-const ProfileSection = ({ profilePage, addPost, updateNewPostText }) => {
+const ProfileSection = ({ profilePage, dispathch }) => {
   return (
     <section className="content">
       <Profile />
-      <Posts updateNewPostText={updateNewPostText} addPost={addPost} profilePage={profilePage} />
+      <Posts dispathch={dispathch} profilePage={profilePage} />
     </section>
   );
 };

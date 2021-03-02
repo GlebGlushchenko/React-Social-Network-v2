@@ -38,23 +38,6 @@ let store = {
     this.rerenderEntireTree = observer;
   },
 
-  addPost() {
-    const newPost = {
-      id: 5,
-      text: this.state.profilePage.newPostText,
-      like: 0,
-    };
-
-    this.state.profilePage.posts.push(newPost);
-    this.state.profilePage.newPostText = '';
-    this.rerenderEntireTree(this.state);
-  },
-
-  updateNewPostText(newText) {
-    this.state.profilePage.newPostText = newText;
-    this.rerenderEntireTree(this.state);
-  },
-
   updateNewMessagesText(newText) {
     this.state.messagesPage.newMessageText = newText;
     this.rerenderEntireTree(this.state);
@@ -67,6 +50,22 @@ let store = {
     this.state.messagesPage.dialogs.push(newMessage);
     this.state.messagesPage.newMessageText = '';
     this.rerenderEntireTree(this.state);
+  },
+  dispathch(action) {
+    if (action.type === 'ADD_POST') {
+      const newPost = {
+        id: 5,
+        text: this.state.profilePage.newPostText,
+        like: 0,
+      };
+
+      this.state.profilePage.posts.push(newPost);
+      this.state.profilePage.newPostText = '';
+      this.rerenderEntireTree(this.state);
+    } else if (action.type === 'UPDATE_NEW_POST_TEXT') {
+      this.state.profilePage.newPostText = action.newText;
+      this.rerenderEntireTree(this.state);
+    }
   },
 };
 

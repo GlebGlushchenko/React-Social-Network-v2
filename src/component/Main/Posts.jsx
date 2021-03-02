@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import Post from './Post';
 
-const Posts = ({ profilePage, addPost, updateNewPostText }) => {
+const Posts = ({ profilePage, dispathch }) => {
   const [posts, setPosts] = useState(profilePage);
 
   const newPostElement = React.createRef();
   const onChangeInput = () => {
-    updateNewPostText(newPostElement.current.value);
+    dispathch({ type: 'UPDATE_NEW_POST_TEXT', newText: newPostElement.current.value });
   };
 
   const OnAddPost = () => {
-    addPost(newPostElement.current.value);
+    dispathch({ type: 'ADD_POST' });
   };
 
   const onRemovePost = (id) => {

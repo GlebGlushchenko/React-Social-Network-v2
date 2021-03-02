@@ -10,19 +10,13 @@ import Messages from './component/Dialogs/Diaologs';
 import News from './component/News/News';
 import Users from './component/Users/Users';
 
-function App({ state, addPost, updateNewPostText, updateNewMessagesText, addMessages }) {
+function App({ state, dispathch, updateNewMessagesText, addMessages }) {
   return (
     <div className="main__wrapper">
       <Header />
       <Route
         path="/profile"
-        render={() => (
-          <ProfileSection
-            updateNewPostText={updateNewPostText}
-            addPost={addPost}
-            profilePage={state.profilePage}
-          />
-        )}
+        render={() => <ProfileSection dispathch={dispathch} profilePage={state.profilePage} />}
       />
       <Route
         path="/messages"
