@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { addPostAC, updateNewPostTextAC } from '../redux/state';
 import Post from './Post';
 
 const Posts = ({ profilePage, dispathch }) => {
@@ -6,11 +7,10 @@ const Posts = ({ profilePage, dispathch }) => {
 
   const newPostElement = React.createRef();
   const onChangeInput = () => {
-    dispathch({ type: 'UPDATE_NEW_POST_TEXT', newText: newPostElement.current.value });
+    dispathch(updateNewPostTextAC(newPostElement.current.value));
   };
-
   const OnAddPost = () => {
-    dispathch({ type: 'ADD_POST' });
+    dispathch(addPostAC());
   };
 
   const onRemovePost = (id) => {
