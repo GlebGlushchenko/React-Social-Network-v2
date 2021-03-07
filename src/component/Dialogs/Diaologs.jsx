@@ -3,17 +3,17 @@ import Message from './MessageUserName';
 
 import styles from './messages.module.scss';
 import MessageText from './MessageText';
+import { addMessagesAC, updateNewMessagesTextAC } from '../redux/dialogsReducer';
 
-const Messages = ({ messagesPage, updateNewMessagesText, addMessages }) => {
+const Messages = ({ messagesPage, dispathch }) => {
   const newMessageElement = React.createRef();
 
   const onChangeInputText = () => {
-    console.log(newMessageElement.current.value);
-    updateNewMessagesText(newMessageElement.current.value);
+    dispathch(updateNewMessagesTextAC(newMessageElement.current.value));
   };
 
   const onClickMessagesText = () => {
-    addMessages(newMessageElement.current.value);
+    dispathch(addMessagesAC(newMessageElement.current.value));
   };
 
   return (

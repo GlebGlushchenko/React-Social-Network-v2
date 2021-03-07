@@ -9,18 +9,12 @@ const rerenderEntireTree = () => {
   ReactDOM.render(
     <React.StrictMode>
       <BrowserRouter>
-        <App
-          addMessages={store.addMessages.bind(store)}
-          updateNewMessagesText={store.updateNewMessagesText.bind(store)}
-          dispathch={store.dispathch.bind(store)}
-          state={store.getState()}
-        />
+        <App dispathch={store.dispathch.bind(store)} state={store.getState()} />
       </BrowserRouter>
     </React.StrictMode>,
     document.getElementById('root'),
   );
 };
-console.log(store);
 
 rerenderEntireTree(store.getState());
 

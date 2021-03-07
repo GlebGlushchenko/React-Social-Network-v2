@@ -10,7 +10,7 @@ import Messages from './component/Dialogs/Diaologs';
 import News from './component/News/News';
 import Users from './component/Users/Users';
 
-function App({ state, dispathch, updateNewMessagesText, addMessages }) {
+function App({ state, dispathch }) {
   return (
     <div className="main__wrapper">
       <Header />
@@ -20,13 +20,7 @@ function App({ state, dispathch, updateNewMessagesText, addMessages }) {
       />
       <Route
         path="/messages"
-        render={() => (
-          <Messages
-            updateNewMessagesText={updateNewMessagesText}
-            addMessages={addMessages}
-            messagesPage={state.messagesPage}
-          />
-        )}
+        render={() => <Messages dispathch={dispathch} messagesPage={state.messagesPage} />}
       />
       <Route path="/news" render={() => <News />} />
       <Route path="/users" render={() => <Users />} />

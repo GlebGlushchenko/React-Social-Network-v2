@@ -1,5 +1,5 @@
-const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT';
-const ADD_POST = 'ADD_POST';
+import profileReducer from './profileReducer';
+import dialogsReducer from './dialogsReducer';
 
 let store = {
   state: {
@@ -41,43 +41,12 @@ let store = {
     this.rerenderEntireTree = observer;
   },
 
-  updateNewMessagesText(newText) {
-    this.state.messagesPage.newMessageText = newText;
-    this.rerenderEntireTree(this.state);
-  },
-
-  addMessages() {
-    const newMessage = {
-      message: this.state.messagesPage.newMessageText,
-    };
-    this.state.messagesPage.dialogs.push(newMessage);
-    this.state.messagesPage.newMessageText = '';
-    this.rerenderEntireTree(this.state);
-  },
   dispathch(action) {
-    if (action.type === 'ADD_POST') {
-      const newPost = {
-        id: 5,
-        text: this.state.profilePage.newPostText,
-        like: 0,
-      };
-
-      this.state.profilePage.posts.push(newPost);
-      this.state.profilePage.newPostText = '';
-      this.rerenderEntireTree(this.state);
-    } else if (action.type === 'UPDATE_NEW_POST_TEXT') {
-      this.state.profilePage.newPostText = action.newText;
-      this.rerenderEntireTree(this.state);
-    }
+    this.state.profilePage = profileReducer(this.state.profilePage, action);
+    this.state.messagesPage = dialogsReducer(this.state.messagesPage, action);
+    this.rerenderEntireTree(this.state);
   },
 };
-
-export const addPostAC = () => ({ type: ADD_POST });
-
-export const updateNewPostTextAC = (newText) => ({
-  type: UPDATE_NEW_POST_TEXT,
-  newText: newText,
-});
 
 window.store = store;
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { addPostAC, updateNewPostTextAC } from '../redux/state';
+import { addPostAC, updateNewPostTextAC } from '../redux/profileReducer';
 import Post from './Post';
 
 const Posts = ({ profilePage, dispathch }) => {
