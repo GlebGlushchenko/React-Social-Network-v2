@@ -10,17 +10,21 @@ import Messages from './component/Dialogs/Diaologs';
 import News from './component/News/News';
 import Users from './component/Users/Users';
 
-function App({ state, dispathch }) {
+function App({ store }) {
   return (
     <div className="main__wrapper">
       <Header />
       <Route
         path="/profile"
-        render={() => <ProfileSection dispathch={dispathch} profilePage={state.profilePage} />}
+        render={() => (
+          <ProfileSection dispatch={store.dispatch} profilePage={store.getState().profilePage} />
+        )}
       />
       <Route
         path="/messages"
-        render={() => <Messages dispathch={dispathch} messagesPage={state.messagesPage} />}
+        render={() => (
+          <Messages dispatch={store.dispatch} messagesPage={store.getState().messagesPage} />
+        )}
       />
       <Route path="/news" render={() => <News />} />
       <Route path="/users" render={() => <Users />} />

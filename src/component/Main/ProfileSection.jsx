@@ -2,11 +2,11 @@ import React from 'react';
 import Profile from './Profile';
 import Posts from './Posts';
 
-const ProfileSection = ({ profilePage, dispathch }) => {
+const ProfileSection = ({ profilePage, dispatch }) => {
   return (
     <section className="content">
       <Profile />
-      <Posts dispathch={dispathch} profilePage={profilePage} />
+      <Posts dispatch={dispatch} profilePage={profilePage} />
     </section>
   );
 };

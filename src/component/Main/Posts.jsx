@@ -2,15 +2,15 @@ import React, { useState } from 'react';
 import { addPostAC, updateNewPostTextAC } from '../redux/profileReducer';
 import Post from './Post';
 
-const Posts = ({ profilePage, dispathch }) => {
+const Posts = ({ profilePage, dispatch }) => {
   const [posts, setPosts] = useState(profilePage);
 
   const newPostElement = React.createRef();
   const onChangeInput = () => {
-    dispathch(updateNewPostTextAC(newPostElement.current.value));
+    dispatch(updateNewPostTextAC(newPostElement.current.value));
   };
   const OnAddPost = () => {
-    dispathch(addPostAC());
+    dispatch(addPostAC());
   };
 
   const onRemovePost = (id) => {

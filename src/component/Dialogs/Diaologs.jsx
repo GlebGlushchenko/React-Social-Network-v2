@@ -5,15 +5,15 @@ import styles from './messages.module.scss';
 import MessageText from './MessageText';
 import { addMessagesAC, updateNewMessagesTextAC } from '../redux/dialogsReducer';
 
-const Messages = ({ messagesPage, dispathch }) => {
+const Messages = ({ messagesPage, dispatch }) => {
   const newMessageElement = React.createRef();
 
   const onChangeInputText = () => {
-    dispathch(updateNewMessagesTextAC(newMessageElement.current.value));
+    dispatch(updateNewMessagesTextAC(newMessageElement.current.value));
   };
 
   const onClickMessagesText = () => {
-    dispathch(addMessagesAC(newMessageElement.current.value));
+    dispatch(addMessagesAC(newMessageElement.current.value));
   };
 
   return (
