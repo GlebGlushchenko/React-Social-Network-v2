@@ -1,54 +1,36 @@
-import React, { useState } from 'react';
-import { addPostAC, updateNewPostTextAC } from '../redux/profileReducer';
-import Post from './Post';
+import React, { useState } from 'react'
+import { addPostAC, updateNewPostTextAC } from '../redux/profileReducer'
+import Post from './Post'
 
-const Posts = ({ profilePage, dispatch }) => {
-  const [posts, setPosts] = useState(profilePage);
+const Posts = ({
+  profilePage,
+  OnAddPost,
+  onChangeInput,
+  onAddLike,
+  onRemovePost,
+  onRemoveLike,
+}) => {
+  const newPostElement = React.createRef()
 
-  const newPostElement = React.createRef();
-  const onChangeInput = () => {
-    dispatch(updateNewPostTextAC(newPostElement.current.value));
-  };
-  const OnAddPost = () => {
-    dispatch(addPostAC());
-  };
+  const handlerChangeUnputText = () => {
+    onChangeInput(newPostElement.current.value)
+  }
 
-  const onRemovePost = (id) => {
-    setPosts({
-      posts1: [
-        ...posts.posts1.filter((_, curId) => {
-          if (id !== curId) {
-            console.log(curId);
-            return true;
-          }
-          return false;
-        }),
-      ],
-    });
-  };
+  const handlerAddPost = () => {
+    OnAddPost()
+  }
 
-  const onAddLike = (id) => {
-    console.log(id);
-    setPosts({
-      ...posts,
-      posts1: [
-        ...posts.posts1.map((post) => {
-          return post.id === id ? { ...post, like: post.like + 1 } : post;
-        }),
-      ],
-    });
-  };
+  const handlerAddLike = (id) => {
+    onAddLike(id)
+  }
 
-  const onRemoveLike = (id) => {
-    setPosts({
-      ...posts,
-      posts1: [
-        ...posts.posts1.map((post) => {
-          return post.id === id ? { ...post, like: post.like - 1 } : post;
-        }),
-      ],
-    });
-  };
+  const handlerRemovePost = (id) => {
+    onRemovePost(id)
+  }
+
+  const handlerRemoveLike = (id) => {
+    onRemoveLike(id)
+  }
 
   return (
     <div className="posts">
@@ -57,9 +39,9 @@ const Posts = ({ profilePage, dispatch }) => {
         <div className="posts__content">
           {profilePage.posts.map((post, index) => (
             <Post
-              onRemovePost={onRemovePost}
-              onAddLike={onAddLike}
-              onRemoveLike={onRemoveLike}
+              handlerRemoveLike={handlerRemoveLike}
+              handlerRemovePost={handlerRemovePost}
+              handlerAddLike={handlerAddLike}
               id={post.id}
               like={post.like}
               key={index}
@@ -72,21 +54,21 @@ const Posts = ({ profilePage, dispatch }) => {
           <input
             ref={newPostElement}
             value={profilePage.newPostText}
-            onChange={onChangeInput}
+            onChange={handlerChangeUnputText}
             className="posts__controle__input"
             type="text"
             placeholder="Input text"
           />
-          <button onClick={OnAddPost} className="posts__controle__btn">
+          <button onClick={handlerAddPost} className="posts__controle__btn">
             POST
           </button>
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Posts;
+export default Posts
 
 {
   /* <Post postText={textPost} />

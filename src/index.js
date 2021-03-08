@@ -1,9 +1,9 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import { BrowserRouter } from 'react-router-dom';
-import store from './component/redux/reduxStore';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import './index.css'
+import App from './App'
+import { BrowserRouter } from 'react-router-dom'
+import store from './component/redux/reduxStore'
 
 const rerenderEntireTree = () => {
   ReactDOM.render(
@@ -13,9 +13,9 @@ const rerenderEntireTree = () => {
       </BrowserRouter>
     </React.StrictMode>,
     document.getElementById('root'),
-  );
-};
+  )
+}
 
-rerenderEntireTree(store.getState());
+rerenderEntireTree(store.getState())
 
-store.subscribe(rerenderEntireTree);
+store.subscribe(rerenderEntireTree)

@@ -1,5 +1,8 @@
-const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT';
-const ADD_POST = 'ADD_POST';
+const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT'
+const ADD_POST = 'ADD_POST'
+const ADD_LIKE = 'ADD_LIKE'
+const REMOVE_LIKE = 'REMOVE_LIKE'
+const REMOVE_POST = 'REMOVE_POST'
 
 const initialState = {
   posts: [
@@ -11,27 +14,72 @@ const initialState = {
     { id: 6, text: 'lorem ipsum', like: 1 },
   ],
   newPostText: '',
-};
+}
 
 const profileReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_POST:
-      state.posts.push({ id: 6, text: state.newPostText, like: 0 });
-      state.newPostText = '';
-      return state;
+      state.posts.push({ id: 6, text: state.newPostText, like: 0 })
+      state.newPostText = ''
+      return state
     case UPDATE_NEW_POST_TEXT:
-      state.newPostText = action.newText;
-      return state;
+      state.newPostText = action.newText
+      return state
+    case ADD_LIKE:
+      return {
+        ...state,
+        posts: [
+          ...state.posts.map((post) =>
+            post.id === action.id ? { ...post, like: post.like + 1 } : post,
+          ),
+        ],
+      }
+    case REMOVE_POST:
+      return {
+        ...state,
+        posts: [
+          ...state.posts.filter((_, curId) => {
+            if (action.id !== curId) {
+              return true
+            }
+            return false
+          }),
+        ],
+      }
+    case REMOVE_LIKE:
+      return {
+        ...state,
+        posts: [
+          ...state.posts.map((post) =>
+            post.id === action.id ? { ...post, like: post.like - 1 } : post,
+          ),
+        ],
+      }
     default:
-      return state;
+      return state
   }
-};
+}
 
-export const addPostAC = () => ({ type: ADD_POST });
+export const addPostAC = () => ({ type: ADD_POST })
 
 export const updateNewPostTextAC = (newText) => ({
   type: UPDATE_NEW_POST_TEXT,
   newText: newText,
-});
+})
 
-export default profileReducer;
+export const addLikeAC = (id) => ({
+  type: ADD_LIKE,
+  id: id,
+})
+
+export const onRemovePostAC = (id) => ({
+  type: REMOVE_POST,
+  id: id,
+})
+
+export const onRemoveLikeAC = (id) => ({
+  type: REMOVE_LIKE,
+  id: id,
+})
+
+export default profileReducer

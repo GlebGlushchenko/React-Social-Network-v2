@@ -1,14 +1,28 @@
-import React from 'react';
-import Profile from './Profile';
-import Posts from './Posts';
+import React from 'react'
+import Posts from './Posts'
+import Profile from './Profile'
 
-const ProfileSection = ({ profilePage, dispatch }) => {
+const ProfileSection = ({
+  profilePage,
+  OnAddPost,
+  onChangeInput,
+  onAddLike,
+  onRemovePost,
+  onRemoveLike,
+}) => {
   return (
     <section className="content">
       <Profile />
-      <Posts dispatch={dispatch} profilePage={profilePage} />
+      <Posts
+        onRemoveLike={onRemoveLike}
+        onRemovePost={onRemovePost}
+        onAddLike={onAddLike}
+        OnAddPost={OnAddPost}
+        onChangeInput={onChangeInput}
+        profilePage={profilePage}
+      />
     </section>
-  );
-};
+  )
+}
 
-export default ProfileSection;
+export default ProfileSection

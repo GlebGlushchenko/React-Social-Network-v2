@@ -1,20 +1,28 @@
-import React, { useState } from 'react';
-import Message from './MessageUserName';
+import React, { useState } from 'react'
+import Message from './MessageUserName'
 
-import styles from './messages.module.scss';
-import MessageText from './MessageText';
-import { addMessagesAC, updateNewMessagesTextAC } from '../redux/dialogsReducer';
+import styles from './messages.module.scss'
+import MessageText from './MessageText'
+import { addMessagesAC, updateNewMessagesTextAC } from '../redux/dialogsReducer'
 
-const Messages = ({ messagesPage, dispatch }) => {
-  const newMessageElement = React.createRef();
+const Messages = ({ messagesPage, onChangeInputText, addMessage }) => {
+  const newMessageElement = React.createRef()
 
-  const onChangeInputText = () => {
-    dispatch(updateNewMessagesTextAC(newMessageElement.current.value));
-  };
+  // const onChangeInputText = () => {
+  //   dispatch(updateNewMessagesTextAC(newMessageElement.current.value))
+  // }
 
-  const onClickMessagesText = () => {
-    dispatch(addMessagesAC(newMessageElement.current.value));
-  };
+  // const onClickMessagesText = () => {
+  //   dispatch(addMessagesAC(newMessageElement.current.value))
+  // }
+
+  const handlerChangeInputMessageText = () => {
+    onChangeInputText(newMessageElement.current.value)
+  }
+
+  const handlerAddMessage = () => {
+    addMessage()
+  }
 
   return (
     <div className={styles.messages__wrapper}>
@@ -31,17 +39,17 @@ const Messages = ({ messagesPage, dispatch }) => {
           ))}
           <input
             ref={newMessageElement}
-            onChange={onChangeInputText}
+            onChange={handlerChangeInputMessageText}
             value={messagesPage.newMessageText}
             type="text"
             name=""
             id=""
           />
-          <button onClick={onClickMessagesText}>Send</button>
+          <button onClick={handlerAddMessage}>Send</button>
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Messages;
+export default Messages

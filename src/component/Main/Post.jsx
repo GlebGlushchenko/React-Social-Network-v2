@@ -1,8 +1,16 @@
-import post__avatar from '../../img/profile/profile__avatar.png';
+import post__avatar from '../../img/profile/profile__avatar.png'
 
-import like1 from '../../img/posts/like.png';
+import like1 from '../../img/posts/like.png'
 
-const Post = ({ index, postText, like, onAddLike, id, onRemoveLike, onRemovePost }) => {
+const Post = ({
+  index,
+  postText,
+  like,
+  id,
+  handlerAddLike,
+  handlerRemovePost,
+  handlerRemoveLike,
+}) => {
   return (
     <div className="post__wrapper">
       <img src={post__avatar} alt="" />
@@ -10,17 +18,24 @@ const Post = ({ index, postText, like, onAddLike, id, onRemoveLike, onRemovePost
 
       <div className="like__wrapper">
         <img
-          onClick={() => (like >= 1 ? onRemoveLike(id) : onAddLike(id))}
+          onClick={() => {
+            like < 1 ? handlerAddLike(id) : handlerRemoveLike(id)
+          }}
           className="like"
           width="30px"
           src={like1}
           alt=""
         />
         <p className="like__count">{like}</p>
-        <p onClick={() => onRemovePost(index)}>remove</p>
+        <p
+          onClick={() => {
+            handlerRemovePost(id)
+          }}>
+          remove
+        </p>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Post;
+export default Post
