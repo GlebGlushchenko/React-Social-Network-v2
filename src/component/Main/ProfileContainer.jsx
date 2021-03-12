@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
 import {
   addPostAC,
@@ -9,38 +10,33 @@ import {
 } from '../redux/profileReducer'
 import ProfileSection from './ProfileSection'
 
-const ProfileContainer = ({ profilePage, dispatch }) => {
-  const onChangeInput = (newText) => {
-    dispatch(updateNewPostTextAC(newText))
-  }
-  const OnAddPost = () => {
-    dispatch(addPostAC())
-  }
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onChangeInput: (newText) => {
+      dispatch(updateNewPostTextAC(newText))
+    },
+    OnAddPost: () => {
+      dispatch(addPostAC())
+    },
 
-  const onAddLike = (id) => {
-    dispatch(addLikeAC(id))
-  }
+    onAddLike: (id) => {
+      dispatch(addLikeAC(id))
+    },
 
-  const onRemovePost = (id) => {
-    dispatch(onRemovePostAC(id))
-  }
+    onRemovePost: (id) => {
+      dispatch(onRemovePostAC(id))
+    },
 
-  const onRemoveLike = (id) => {
-    dispatch(onRemoveLikeAC(id))
+    onRemoveLike: (id) => {
+      dispatch(onRemoveLikeAC(id))
+    },
   }
-
-  return (
-    <div className="content">
-      <ProfileSection
-        onRemoveLike={onRemoveLike}
-        OnAddPost={OnAddPost}
-        onChangeInput={onChangeInput}
-        profilePage={profilePage}
-        onAddLike={onAddLike}
-        onRemovePost={onRemovePost}
-      />
-    </div>
-  )
 }
+const mapStateToProps = (state) => {
+  return {
+    profilePage: state.profilePage,
+  }
+}
+const ProfileContainer = connect(mapStateToProps, mapDispatchToProps)(ProfileSection)
 
 export default ProfileContainer

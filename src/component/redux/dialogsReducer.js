@@ -1,5 +1,5 @@
-const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE_NEW_MESSAGE_TEXT';
-const ADD_MESSAGE = 'ADD_MESSAGE';
+const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE_NEW_MESSAGE_TEXT'
+const ADD_MESSAGE = 'ADD_MESSAGE'
 
 const initialState = {
   messagesUserName: [
@@ -16,28 +16,33 @@ const initialState = {
     { message: 'Lorem ipsum et43fd sit amet.' },
   ],
   newMessageText: '',
-};
+}
 
 const dialogsReducer = (state = initialState, action) => {
   switch (action.type) {
     case UPDATE_NEW_MESSAGE_TEXT:
-      state.newMessageText = action.newText;
-      return state;
+      return {
+        ...state,
+        newMessageText: action.newText,
+      }
 
     case ADD_MESSAGE:
-      state.dialogs.push({ message: state.newMessageText });
-      state.newMessageText = ' ';
-      return state;
+      return {
+        ...state,
+        dialogs: [...state.dialogs, { message: state.newMessageText }],
+        newMessageText: '',
+      }
+
     default:
-      return state;
+      return state
   }
-};
+}
 
 export const updateNewMessagesTextAC = (newText) => ({
   type: UPDATE_NEW_MESSAGE_TEXT,
   newText: newText,
-});
+})
 
-export const addMessagesAC = () => ({ type: ADD_MESSAGE });
+export const addMessagesAC = () => ({ type: ADD_MESSAGE })
 
-export default dialogsReducer;
+export default dialogsReducer
