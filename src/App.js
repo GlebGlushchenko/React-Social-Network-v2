@@ -9,7 +9,8 @@ import Login from './component/Login/Login'
 import News from './component/News/News'
 import Users from './component/Users/Users'
 import DialogsContainer from './component/Dialogs/DialogsContainer'
-import ProfileContainer from './component/Main/ProfileContainer'
+import ProfileContainer from './component/Post/ProfileContainer'
+import UsersContainer from './component/Users/UsersContainer'
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
       <Route path="/profile" render={() => <ProfileContainer />} />
       <Route path="/messages" render={() => <DialogsContainer />} />
       <Route path="/news" render={() => <News />} />
-      <Route path="/users" render={() => <Users />} />
+      <Route path="/users" render={() => <UsersContainer />} />
       <Route path="/about" render={() => <About />} />
       <Route path="/login" render={() => <Login />} />
       <Footer />
